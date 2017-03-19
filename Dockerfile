@@ -6,11 +6,11 @@ RUN sed -i 's/main$/main universe/' /etc/apt/sources.list
 RUN apt-get -qq update
 RUN apt-get -qqy upgrade
 RUN apt-get install -qy git git-core gnupg flex bison gperf libsdl1.2-dev libesd0-dev libwxgtk3.0-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev openjdk-8-jre-headless openjdk-8-jdk-headless pngcrush schedtool libxml2 libxml2-utils xsltproc lzop libc6-dev schedtool g++-multilib lib32z1-dev lib32ncurses5-dev libreadline-gplv2-dev gcc-multilib python
-
+RUN apt-get install python3
 RUN apt-get install -qy vim wget bash-completion unzip
 #RUN apt-get -qy android-tools-adb android-tools-fastboot sudo
 #RUN apt-get install -qy ccache
-
+RUN alias python='/usr/bin/python2.7'
 RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /bin/repo
 RUN chmod a+x /bin/repo
 
