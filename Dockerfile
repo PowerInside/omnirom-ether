@@ -11,7 +11,7 @@ RUN apt-get install -qy vim wget bash-completion unzip
 #RUN apt-get -qy android-tools-adb android-tools-fastboot sudo
 #RUN apt-get install -qy ccache
 
-RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /bin
+RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /bin/repo
 RUN chmod a+x /bin/repo
 
 RUN mkdir -p /android/omni
