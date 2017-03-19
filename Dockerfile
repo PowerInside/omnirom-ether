@@ -18,7 +18,8 @@ RUN mkdir -p /android/omni
 RUN cd /android/omni
 
 RUN repo init -u https://github.com/omnirom/android.git -b android-7.1
-COPY ./local_manifest/local_manifest.xml /android/omni/.repo/local_manifest.xml
+RUN mkdir -p /android/omni/.repo/local_manifests/
+COPY ./local_manifest/local_manifest.xml /android/omni/.repo/local_manifests/local_manifest.xml
 RUN repo sync -j16 -f --no-clone-bundle
 RUN export USE_CCACHE=1
 RUN /android/omni/prebuilts/misc/linux-x86/ccache/ccache -M 15G
