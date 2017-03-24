@@ -22,8 +22,4 @@ RUN mkdir -p /android/sys_dump
 RUN cd /android/sys_dump
 RUN wget -c "https://dl.omnirom.org/ether/omni-7.1.1-20170319-ether-WEEKLY.zip"
 RUN unzip omni-7.1.1-20170319-ether-WEEKLY.zip system/*
-RUN cd /android/omni/device/nextbit/ether
-RUN ./extract-files.sh -d /android/sys_dump/
-
-RUN source /android/build/envsetup.sh
 CMD sh /android/omni/repo_prep.sh
