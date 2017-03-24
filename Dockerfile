@@ -12,14 +12,10 @@ RUN apt-get install -qy vim wget bash-completion unzip
 RUN alias python='/usr/bin/python2.7'
 RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /bin/repo
 RUN chmod a+x /bin/repo
-
-RUN mkdir -p /android/omni
-RUN cd /android/omni
-
-RUN repo init -u https://github.com/omnirom/android.git -b android-7.1
+RUN mkdir -p /android/omni && cd /android/omni
 RUN mkdir -p /android/omni/.repo/local_manifests/
 COPY ./local_manifest/local_manifest.xml /android/omni/.repo/local_manifests/local_manifest.xml
-RUN repo sync -j16 -f --no-clone-bundle
+COPY ./repo_prep.sh /android/omni/repo_prep.sh
 RUN export USE_CCACHE=1
 RUN /android/omni/prebuilts/misc/linux-x86/ccache/ccache -M 15G
 
@@ -31,4 +27,4 @@ RUN cd /android/omni/device/nextbit/ether
 RUN ./extract-files.sh -d /android/sys_dump/
 
 RUN source /android/build/envsetup.sh
-CMD brunch ether
+CMD sh /android/omni/repo_prep.sh
