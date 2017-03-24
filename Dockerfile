@@ -17,7 +17,6 @@ RUN mkdir -p /android/omni/.repo/local_manifests/
 COPY ./local_manifest/local_manifest.xml /android/omni/.repo/local_manifests/local_manifest.xml
 COPY ./repo_prep.sh /android/omni/repo_prep.sh
 RUN export USE_CCACHE=1
-RUN /android/omni/prebuilts/misc/linux-x86/ccache/ccache -M 15G
 
 RUN mkdir -p /android/sys_dump
 RUN cd /android/sys_dump
