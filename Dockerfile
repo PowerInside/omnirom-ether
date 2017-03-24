@@ -14,12 +14,10 @@ RUN curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > /bin/
 RUN chmod a+x /bin/repo
 RUN mkdir -p /android/omni && cd /android/omni
 RUN mkdir -p /android/omni/.repo/local_manifests/
-COPY ./local_manifest/local_manifest.xml /android/omni/.repo/local_manifests/local_manifest.xml
-COPY ./repo_prep.sh /android/omni/repo_prep.sh
-RUN export USE_CCACHE=1
-
 RUN mkdir -p /android/sys_dump
 RUN cd /android/sys_dump
 RUN wget -c "https://dl.omnirom.org/ether/omni-7.1.1-20170319-ether-WEEKLY.zip"
 RUN unzip omni-7.1.1-20170319-ether-WEEKLY.zip system/*
+COPY ./local_manifest/local_manifest.xml /android/omni/.repo/local_manifests/local_manifest.xml
+COPY ./repo_prep.sh /android/omni/repo_prep.sh
 CMD sh /android/omni/repo_prep.sh
