@@ -17,7 +17,7 @@ RUN mkdir -p /android/omni/.repo/local_manifests/
 RUN mkdir -p /android/sys_dump
 RUN cd /android/sys_dump
 RUN wget -c "https://dl.omnirom.org/ether/omni-7.1.1-20170319-ether-WEEKLY.zip"
-RUN unzip omni-7.1.1-20170319-ether-WEEKLY.zip system/*
+RUN unzip omni-7.1.1-20170319-ether-WEEKLY.zip system/* -d /android/sys_dump
 COPY ./local_manifest/local_manifest.xml /android/omni/.repo/local_manifests/local_manifest.xml
 COPY ./repo_prep.sh /android/omni/repo_prep.sh
 CMD sh /android/omni/repo_prep.sh
